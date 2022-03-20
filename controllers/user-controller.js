@@ -13,18 +13,11 @@ const userController = {
     // get specific User
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
-        then(dbUserData => {
-            // If no User is found, send 404
-            if (!dbUserData) {
-              res.status(404).json({ message: 'No User found with this id!' });
-              return;
-            }
-            res.json(dbUserData);
-          })
-          .catch(err => {
-            console.log(err);
-            res.status(400).json(err);
-          });
+        .then(dbUserData => res.json(dbUserData))
+      .catch(err => {
+        console.log(err);
+        res.sendStatus(400);
+      });
       },
       // create new user object
       createUser({ body }, res) {

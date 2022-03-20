@@ -16,7 +16,15 @@ const UserSchema = new Schema(
         }, 
         thoughts: [],
         friends: [], 
-    }
+    },
+    {
+        toJSON: {
+          virtuals: true,
+          getters: true
+        },
+        // prevents virtuals from creating duplicate of _id as `id`
+        id: false
+      }
 );
 
 // user model in Mongoose 
