@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+//USER model 
 const UserSchema = new Schema(
     {
         userName: {
@@ -13,11 +14,12 @@ const UserSchema = new Schema(
             required: true,
             unique: true, 
         }, 
-        thoughts: {
-
-        }, 
-        friends: {
-            
-        }
+        thoughts: [],
+        friends: [], 
     }
-)
+);
+
+// user model in Mongoose 
+const User = model('User', UserSchema);
+module.exports = User;
+
