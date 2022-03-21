@@ -43,4 +43,4 @@ const ThoughtController = {
   }  
 };
 
-module.exports = thoughtController;
+module.exports = ThoughtController;

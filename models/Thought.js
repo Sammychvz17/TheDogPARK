@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 
@@ -31,7 +31,7 @@ const reactionSchema = new Schema({
     id: false
 });
 
-const ThoughtSchema = new Schema({
+const thoughtSchema = new Schema({
     thoughtText: {
         type: String,
         //it is Required to have
@@ -48,7 +48,7 @@ const ThoughtSchema = new Schema({
     }, 
     username: {
         type: String,
-        required: true
+        required: true,
     }, 
     reactions: [reactionSchema]
 },
@@ -61,12 +61,8 @@ const ThoughtSchema = new Schema({
     }
 );
 
-//returns  how many reaction there are 
-thoughtSchema.virtual('reactionCount').get(function() {
-    return this.reactions.length;
-});
 
 //puts model together 
-const Thought = model('Thought', thoughtSchema);
+const Thought = model('thought', thoughtSchema);
 
 module.exports = Thought;
